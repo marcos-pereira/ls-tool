@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-// Use: opendir
+// Use: opendir, readdir
 #include <dirent.h>
 
 int main(int argc, char *argv[]) {
@@ -14,6 +14,12 @@ int main(int argc, char *argv[]) {
         perror("opendir");
         return 1;
     }
+
+    // Read the first entry in the directory and print its name
+    struct dirent *entry;
+    // Reference: man 3 readdir
+    entry = readdir(dir);
+    printf("%s\n", entry->d_name);
 
     return 0;
 }

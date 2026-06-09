@@ -17,9 +17,13 @@ int main(int argc, char *argv[]) {
 
     // Read the first entry in the directory and print its name
     struct dirent *entry;
-    // Reference: man 3 readdir
-    entry = readdir(dir);
-    printf("%s\n", entry->d_name);
+
+    // Loop through the directory entries until there 
+    // are no more entries to read
+    while ((entry = readdir(dir)) != NULL) {
+        // Print the name of the current directory entry
+        printf("%s\n", entry->d_name);
+    }
 
     return 0;
 }
